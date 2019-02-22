@@ -8,12 +8,23 @@ const currencies = require('../lib/currencies.json');
 
 const {API} = require('./constants');
 
+/**
+ * Convert an amount of the currency chosen
+ * @param {int} command - Value to convert
+ */
 const cash = async command => {
 	const {amount} = command;
+	/**
+	 * @const {string} - Currency to convert from
+	 */
 	const from = command.from.toUpperCase();
+	/**
+	 * @const {string} - Currency to convert to
+	 */
 	const to = command.to.filter(item => item !== from).map(item => item.toUpperCase());
 
 	console.log();
+	/**Render spinner*/
 	const loading = ora({
 		text: 'Converting...',
 		color: 'green',
@@ -23,8 +34,10 @@ const cash = async command => {
 		}
 	});
 
+	/**Run spinner */
 	loading.start();
 
+	/**Into the conversionusing current rates of currency */
 	await got(API, {
 		json: true
 	}).then(response => {

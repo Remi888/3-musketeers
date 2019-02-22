@@ -7,7 +7,7 @@ describe('starwars-names', () => {
       expect(starWars.all).toHaveLength(starWarsNames.length)
     });
     test('should be an array of strings', () => {
-      for(var i = 0; i < starWars.all.length; i++){
+      for(let i = 0; i < starWars.all.length; i++){
         expect(typeof starWars.all[i]).toBe(typeof "string")
       }
     });
@@ -29,7 +29,7 @@ describe('starwars-names', () => {
     test('should return an array of random items if passed a number', () => {
       const number = 5
       const someRandomNames = starWars.random(number);
-      for(var i = 0; i < number; i++){
+      for(let i = 0; i < number; i++){
         expect(starWars.all).toContain(someRandomNames[i])
       }
     });
